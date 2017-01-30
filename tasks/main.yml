@@ -11,4 +11,12 @@
     name: "{{asg.results[0].instances[0].launch_configuration_name}}"
   register: lc
 
-- debug: var=lc.launch_configurations[0].image_id
+- debug: var="{{lc.launch_configurations[0].image_id}}"
+
+- name: Get facts of AMI
+  ec2_ami_find:
+    ami_id: "{{lc.launch_configurations[0].image_id}}"
+    region: "{{region}}"
+  register: old_ami
+
+- debug: var=old_ami

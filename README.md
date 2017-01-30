@@ -11,6 +11,7 @@ Role Variables
 --------------
 
 * `asg_name`: Auto Scaling Group name 
+* `region`: AWS region
 
 
 Example Playbook
