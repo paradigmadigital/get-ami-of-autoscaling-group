@@ -1,0 +1,14 @@
+---
+# tasks file for get-ami-of-autoscaling-group
+
+- name: Get facts of ASG
+  ec2_asg_facts:
+    name: "{{asg_name}}"
+  register: asg
+
+- name: Get facts of LC
+  ec2_lc_facts:
+    name: "{{asg.results[0].instances[0].launch_configuration_name}}"
+  register: lc
+
+- debug: var=lc.launch_configurations[0].image_id

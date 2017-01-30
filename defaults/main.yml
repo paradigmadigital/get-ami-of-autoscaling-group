@@ -1,0 +1,3 @@
+---
+# defaults file for get-ami-of-autoscaling-group
+asg_name:  
