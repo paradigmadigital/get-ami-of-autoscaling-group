@@ -11,12 +11,18 @@
     name: "{{asg.results[0].instances[0].launch_configuration_name}}"
   register: lc
 
-- debug: var="{{lc.launch_configurations[0].image_id}}"
-
 - name: Get facts of AMI
   ec2_ami_find:
     ami_id: "{{lc.launch_configurations[0].image_id}}"
     region: "{{region}}"
-  register: old_ami
+  register: ami
 
-- debug: var=old_ami
+- set_fact:
+    old_ami: {
+      "ami_id"          : "{{ami.results[0].ami_id}}",
+      "security_groups" : "{{lc.launch_configurations[0].security_groups}}",
+      "vpc_subnet_id"   : "{{asg.results[0].vpc_zone_identifier}}",
+      "volumes"         : "{{ami.results[0].block_device_mapping}}",
+      "zone"            : "{{asg.results[0].instances[0].availability_zone}}",
+      "keypair"         : "{{lc.launch_configurations[0].key_name}}",
+      "instance_type"   : "{{lc.launch_configurations[0].instance_type}}"}
