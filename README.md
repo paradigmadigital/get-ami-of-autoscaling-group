@@ -3,13 +3,13 @@
 Get AMI information of autoscaling group, it will return an old_ami fact with the following information:
 
 
-* `ami_id`          : AMI ID
-* `security_groups` : The security groups of the AMI
-* `vpc_subnet_id`   : The VPC subnet
-* `volumes`         : The AMI volumes
-* `zone`            : The AMI zone
-* `keypair`         : The Keypair used
-* `instance_type`   : The instance type
+* `ami_id`             : AMI ID
+* `security_groups`    : The security groups of the AMI
+* `vpc_subnet_id`      : The VPC subnet
+* `volumes`            : The AMI volumes
+* `availability_zones` : The AMI zone
+* `keypair`            : The Keypair used
+* `instance_type`      : The instance type
 
 Requirements
 ------------
